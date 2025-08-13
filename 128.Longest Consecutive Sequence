@@ -1,0 +1,58 @@
+Intuition
+The problem asks for the length of the longest consecutive sequence of integers in the array, regardless of order.
+If the array is sorted, all consecutive elements will appear next to each other, making it easier to count the streak length by scanning through the array.
+
+Approach
+Sort the array in ascending order.
+Initialize:
+
+longest → to store the length of the longest streak found so far.
+
+currentStreak → to store the current consecutive streak length.
+
+Iterate through the sorted array:
+
+If the current number is equal to the previous number, skip it (to handle duplicates).
+
+If the current number is exactly previous + 1, increment currentStreak.
+
+Otherwise, reset currentStreak to 1 (starting a new streak).
+
+Update longest with the maximum of itself and currentStreak.
+
+Return longest.
+
+Complexity
+Time complexity: O(nlog n)--> sorting O(nlog n) and traverse O(n) for loop , So overall T.C=O(nlog n).
+
+Space complexity: O(1) without using any extra space.
+
+Code
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.empty())  // array is empty no elemnt .
+        return 0;
+        // sort the array:-
+        sort(nums.begin(), nums.end());
+        int longest=1;   //longest = 1 ; for nums[0] case.→ stores maximum streak found so far.
+        int currentstreak =1;    // current consecutive streak
+
+        // lets traverse the array to find the max consecutive order.
+        for(int i=1; i<nums.size();i++){
+
+            if(nums[i]==nums[i-1])  {// nums[1]=nums[1-1=0]
+            continue; // skip duplicate line ka mtlb h aage bdh jao.
+        }
+            if(nums[i] == nums[i-1]+1) {  // imp line of full code lets say nums[2]=3 and
+            // nums[2-1]+1 =2 we got streak of consecutive .
+        currentstreak++;
+            }
+            else{
+                currentstreak=1;
+            }
+            longest=max(longest,currentstreak); // return max streak kitni h by using current streak line of code,
+        }
+        return longest;
+    }
+};

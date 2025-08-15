@@ -1,0 +1,36 @@
+Q:-13. "Roman to Integer"
+[Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.]
+
+Symbol       Value
+I             1
+V             5
+X             10
+L             50
+C             100
+D             500
+M             1000
+For example, 2 is written as II in Roman numeral, just two ones added together. 12 is written as XII, which is simply X + II. The number 27 is written as XXVII, which is XX + V + II.
+
+CODE/C++ :-
+
+
+class Solution {
+public:
+int romanToInt(string s){
+        unordered_map<char, int> map={
+            {'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},
+            {'M',1000}
+        };
+
+        int total=0;
+        for(int i=0; i<s.size();i++){
+            if(i+1<s.size() && map[s[i]]< map[s[i+1]]) { // if these condition met imp*.
+            total-=map[s[i]] ; // subt case eg 4= IV I<V.
+
+            } else{
+                total += map[s[i]]; // normal case add eg 22=XXII , X>I.
+            }
+        }
+            return total;
+    }
+};

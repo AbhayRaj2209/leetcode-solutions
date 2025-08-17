@@ -1,0 +1,32 @@
+Problem:-
+83. Remove Duplicates from Sorted List
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+
+Code/C++:-
+
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* current=head;
+
+         while(current!= nullptr && current->next!= nullptr){ // base condition set for loop.
+         if(current->val==current->next->val){
+            // duplicate h skip kro.
+            current->next= current->next->next;
+         }
+         else{
+            // agr duplicate nahi hai to aage badh jao/ move forward.
+            current= current->next;
+         }
+
+         }
+        return head;
+    }
+};
+
+ 

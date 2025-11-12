@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int chocolatedistribution(vector<int>arr, int n, int m){
+
+    if(m==0 || n==0) // students=m and array size= n choc to be distri.
+       return 0;
+
+     sort(arr.begin(), arr.end());
+      if (m>n) // invalid case ar size n.
+        return -1;  
+
+        int min_diff = INT_MAX; //Initialize minimum difference to a very large value
+// SLIDING WINDOW LOOP M=3
+     for(int i=0; i+m-1<n ; i++){
+        int diff= arr[i+m-1]- arr[i]; // every time wwe get as we traverse windows here 3 time one time we will get min ans as 3.
+        min_diff= min(min_diff, diff);
+
+}
+    return min_diff;  
+}
+int main(){
+    int n=5;
+    int m=3;
+    vector<int> arr={10,4,12,3,1};
+    cout<< chocolatedistribution(arr,n,m);
+    return 0;
+
+
+}

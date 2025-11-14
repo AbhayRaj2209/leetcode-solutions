@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxSubArray(vector<int>&arr){
+    int n = arr.size();
+    int maxSum=arr[0];
+    int Currentsum=arr[0];
+    for(int i=1;i<n;i++){
+        Currentsum= max(arr[i],Currentsum+arr[i]);
+        maxSum= max(maxSum,Currentsum);
+    }
+    return maxSum;
+}
+    int main(){
+       vector<int>arr={6,1,-2,-5,4,-3};
+        cout<<maxSubArray(arr);
+        return 0;
+    }

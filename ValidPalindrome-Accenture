@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+ bool isPalindrome(string s) {
+    int left=0 , right=s.size()-1; // 2 pointers string traverse one from left side and another from right side.
+
+    while(left<right){
+
+        // skip non-alphanumeric character:-
+
+        while (left < right && !isalnum(s[left])) left++;
+        while(left<right && ! isalnum(s[right])) right--;
+
+       // Compare lowercase characters:-(*Imp--> isalnum and tolower)
+
+        if (tolower(s[left]) != tolower(s[right]))
+        return false;
+
+        left++;
+        right--;
+    }
+    return true; // if equal 
+}
+
+     
+      int main(){
+        string s="A man, a plan, a canal: Panama";
+        cout<<isPalindrome(s);
+
+//or write this snippet if u want to print true instead of 1 in termainal.
+
+        //if (isPalindrome(s))
+       // cout << "true";
+   // else
+       // cout << "false";
+
+        return 0;
+
+      }
+        
